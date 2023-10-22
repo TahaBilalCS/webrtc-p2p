@@ -14,7 +14,7 @@ function findByExt(base, exts, files, result) {
         if (!fs.statSync(newbase).isDirectory()) {
             for (let i = 0; i < exts.length; i++) {
                 const ext = exts[i];
-                if (file.substr(-1 * (ext.length + 1)) == '.' + ext) {
+                if (file.substr(-1 * (ext.length + 1)) === '.' + ext) {
                     result.push(newbase);
                     break;
                 }
