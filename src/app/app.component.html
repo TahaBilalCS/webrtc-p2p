@@ -15,11 +15,11 @@
         <button type="button" (click)="female()">&#9792;</button>
         <button type="button" (click)="other()">&#9895;</button>
         <span i18n>The author is {gender, select, male {male} female {female} other {other}}</span>
-        <br /><br />
-        <span i18n
-            >Updated: {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}} minutes ago by {gender,
-            select, male {male} female {female} other {other}}}}
-        </span>
+        <!--        <br /><br />-->
+        <!--        <span i18n-->
+        <!--            >Updated: {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}} minutes ago by {gender,-->
+        <!--            select, male {male} female {female} other {other}}}}-->
+        <!--        </span>-->
         <button (click)="changeTheme('lara-dark')" class="mr-3 cursor-pointer">Dark</button>
         <button (click)="changeTheme('lara-light')" class="mr-3 cursor-pointer">Light</button>
         <i class="bi-alarm"></i>

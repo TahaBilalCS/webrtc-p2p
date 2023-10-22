@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
   <file id="ngi18n" original="ng.template">
-    <unit id="introductionHeader">
-      <segment>
-        <source>Hello i18n!</source>
-      </segment>
-    </unit>
     <unit id="2002272803511843863">
       <segment>
         <source>{VAR_PLURAL, plural, =0 {just now} =1 {one minute ago} other {<ph id="0" equiv="INTERPOLATION"/> minutes ago}}</source>
@@ -44,6 +39,11 @@
     <unit id="7670372064920373295">
       <segment>
         <source>{VAR_SELECT, select, male {male} female {female} other {other}}</source>
+      </segment>
+    </unit>
+    <unit id="introductionHeader">
+      <segment>
+        <source>Hello i18n!</source>
       </segment>
     </unit>
   </file>
