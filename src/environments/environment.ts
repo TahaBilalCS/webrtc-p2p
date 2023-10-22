@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    siteUrl: 'http://localhost:4200'
+    siteBaseUrl: 'https://localhost:4200'
 };
