@@ -46,11 +46,6 @@ function bootstrapApp() {
             path: '',
             component: HomeViewComponent
         },
-        // {
-        //     path: 'session',
-        //     pathMatch: 'full',
-        //     redirectTo: '/' // Redirect to app's main page or to a 404 page
-        // },
         {
             path: '**',
             redirectTo: ''

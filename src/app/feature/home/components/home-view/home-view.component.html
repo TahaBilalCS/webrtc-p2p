@@ -1,11 +1,13 @@
 <div class="home-container">
-    <div class="flex align-items-center justify-content-center mb-4">
+    <div>
         <button (click)="changeTheme('lara-dark')" class="mr-3 cursor-pointer">Dark</button>
         <button (click)="changeTheme('lara-light')" class="mr-3 cursor-pointer">Light</button>
     </div>
     <p-button
-        i18n-label="@@app.start-new-session"
+        i18n-label
         label="Start New Session"
+        i18n-aria-label
+        aria-label="Start New Session"
         icon="bi-stars"
         iconPos="right"
         pAutoFocus
