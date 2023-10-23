@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import { ThemeService } from '@core/services/theme.service';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
+    standalone: true,
+    imports: [RouterOutlet],
+    providers: [],
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-    title = 'webrtc-p2p';
+export class AppComponent implements OnInit, OnDestroy {
+    ngOnInit() {
+        console.log('app component init');
+    }
 
-    constructor(private themeService: ThemeService) {}
-
-    changeTheme(theme: string) {
-        this.themeService.switchTheme(theme);
+    ngOnDestroy() {
+        console.log('app component destroy');
     }
 }

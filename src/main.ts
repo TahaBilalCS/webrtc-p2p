@@ -1,9 +1,10 @@
 // / <reference types="@angular/localize" />
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from '@app/app.module';
 import { loadTranslations } from '@angular/localize';
+import { AppComponent } from '@app/app.component';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter, Routes } from '@angular/router';
+import { SessionViewComponent } from '@feature/session/components/session-view/session-view.component';
+import { HomeViewComponent } from '@feature/home/components/home-view/home-view.component';
 
 // First locale is default, add additional after it
 const availableLocales = ['en', 'ar', 'es', 'fr', 'zh'];
@@ -17,10 +18,7 @@ if (locale in localeMappings) {
 }
 
 if (locale === availableLocales[0]) {
-    console.log('default locale');
-    platformBrowserDynamic()
-        .bootstrapModule(AppModule)
-        .catch(err => console.error(err));
+    bootstrapApp();
 } else {
     // fetch resources for runtime translations. this could also point to an API endpoint
     fetch(`assets/i18n/messages.${locale}.json`)
@@ -33,9 +31,33 @@ if (locale === availableLocales[0]) {
         })
         .then(result => {
             loadTranslations(result);
-
-            platformBrowserDynamic()
-                .bootstrapModule(AppModule)
-                .catch(err => console.error(err));
+            bootstrapApp();
         });
+}
+
+function bootstrapApp() {
+    const routes: Routes = [
+        {
+            path: 'session/:session_id',
+            component: SessionViewComponent
+        },
+
+        {
+            path: '',
+            component: HomeViewComponent
+        },
+        // {
+        //     path: 'session',
+        //     pathMatch: 'full',
+        //     redirectTo: '/' // Redirect to app's main page or to a 404 page
+        // },
+        {
+            path: '**',
+            redirectTo: ''
+        }
+    ];
+
+    bootstrapApplication(AppComponent, {
+        providers: [provideRouter(routes)]
+    }).catch(err => console.error(err));
 }

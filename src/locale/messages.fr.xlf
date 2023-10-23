@@ -1,3 +1,10 @@
-<?xml version="1.0"?><xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US" trgLang="fr">
-  <file original="ng.template" id="ngi18n"/>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US" trgLang="fr">
+  <file original="ng.template" id="ngi18n">
+    <unit id="app.start-new-session">
+      <segment state="initial">
+        <source>Start New Session</source>
+        <target>Start New Session</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
