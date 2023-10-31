@@ -1,0 +1,41 @@
+.home-card {
+    width: 360px;
+    //display: flex;
+    //flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //gap: 1em;
+    //padding: 1em;
+    //border-radius: 1em;
+    //background-color: var(--surface-ground);
+}
+
+.home-card-title,
+.home-card-subtitle {
+    text-align: center;
+    display: block;
+}
+.home-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.theme-toggle {
+    //margin-bottom: 1em;
+    display: inline-block;
+}
+
+.start-new-session-button {
+    //margin-top: 1em;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+
+.session-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+}

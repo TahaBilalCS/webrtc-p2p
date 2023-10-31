@@ -28,7 +28,6 @@ export class ThemeService {
      * You can't inject Renderer2 directly into services, but you can create one using RendererFactory2
      */
     constructor(rendererFactory: RendererFactory2) {
-        console.log('theme service init');
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 

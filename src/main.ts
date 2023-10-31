@@ -5,6 +5,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, Routes } from '@angular/router';
 import { SessionViewComponent } from '@feature/session/components/session-view/session-view.component';
 import { HomeViewComponent } from '@feature/home/components/home-view/home-view.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 // First locale is default, add additional after it
 const availableLocales = ['en', 'ar', 'es', 'fr', 'zh'];
@@ -53,6 +54,10 @@ function bootstrapApp() {
     ];
 
     bootstrapApplication(AppComponent, {
-        providers: [provideRouter(routes)]
+        providers: [
+            provideRouter(routes),
+            // Essentially provides BrowserAnimationsModule
+            provideAnimations()
+        ]
     }).catch(err => console.error(err));
 }

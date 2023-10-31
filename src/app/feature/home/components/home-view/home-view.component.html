@@ -1,18 +1,3 @@
 <div class="home-container">
-    <form class="home-form" [formGroup]="homeFormGroup">
-        <p-inputSwitch class="theme-toggle" formControlName="themeChecked" (onChange)="toggleTheme()"></p-inputSwitch>
-        <p-button
-            i18n-label
-            label="Start New Session"
-            i18n-aria-label
-            aria-label="Start New Session"
-            icon="bi-stars"
-            iconPos="right"
-            pAutoFocus
-            [autofocus]="true"
-            [loading]="loading"
-            [rounded]="true"
-            (onClick)="startNewSession()"
-        ></p-button>
-    </form>
+    <app-session-setup></app-session-setup>
 </div>

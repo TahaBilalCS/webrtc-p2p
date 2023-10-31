@@ -1,0 +1,50 @@
+<form class="home-form" [formGroup]="sessionSetupForm" pFocusTrap>
+    <p-card class="home-card">
+        <!--            <ng-template pTemplate="header">-->
+        <!--                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />-->
+        <!--            </ng-template>-->
+
+        <ng-template pTemplate="title">
+            <span class="home-card-title">Share a link with anyone!</span>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <!--                            <span class="home-card-subtitle">Create a public url below and share it</span>-->
+            <section class="session-card-content">
+                <app-day-night-toggle class="theme-toggle"></app-day-night-toggle>
+                <p-button
+                    class="start-new-session-button"
+                    i18n-label
+                    label="Start New Session"
+                    i18n-aria-label
+                    aria-label="Start New Session"
+                    icon="bi-stars"
+                    iconPos="right"
+                    pAutoFocus
+                    [autofocus]="true"
+                    [loading]="loading"
+                    [rounded]="true"
+                    (onClick)="startNewSession()"
+                ></p-button>
+            </section>
+        </ng-template>
+
+        <!--            <ng-template pTemplate="footer">-->
+        <!--                <p-button-->
+        <!--                    size="small"-->
+        <!--                    styleClass="p-button-text"-->
+        <!--                    class="start-new-session-button"-->
+        <!--                    i18n-label-->
+        <!--                    label="More Info"-->
+        <!--                    i18n-aria-label-->
+        <!--                    aria-label="More Info"-->
+        <!--                    icon="bi-question-circle-fill"-->
+        <!--                    iconPos="right"-->
+        <!--                    pAutoFocus-->
+        <!--                    [autofocus]="true"-->
+        <!--                    [loading]="loading"-->
+        <!--                    [rounded]="true"-->
+        <!--                    (onClick)="startNewSession()"-->
+        <!--                ></p-button>-->
+        <!--            </ng-template>-->
+    </p-card>
+</form>

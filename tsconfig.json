@@ -8,7 +8,8 @@
             "@shared/*": ["src/app/shared/*"],
             "@env/*": ["src/environments/*"],
             "@core/*": ["src/app/core/*"],
-            "@feature/*": ["src/app/feature/*"]
+            "@feature/*": ["src/app/feature/*"],
+            "trystero/*": ["node_modules/trystero/src/*"]
         },
         "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
