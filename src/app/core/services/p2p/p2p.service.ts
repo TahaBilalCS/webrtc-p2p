@@ -5,6 +5,11 @@ import { environment } from '@env/environment';
 import { joinRoom, getOccupants, FirebaseRoomConfig } from 'trystero/firebase';
 import { BaseRoomConfig, Room } from 'trystero';
 
+export interface SessionConfig {
+    roomName: string;
+    roomPassword?: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -12,12 +17,29 @@ export class P2pService {
     trysteroConfig: BaseRoomConfig & FirebaseRoomConfig = { appId: environment.p2pDatabaseUrl };
     room?: Room;
 
-    async start() {
-        const newConfig = { appId: environment.p2pDatabaseUrl, password: '123' };
-        this.room = joinRoom(newConfig, 'fasd');
+    async ping(id: string) {
+        return this.room?.ping(id);
+    }
 
-        this.room.onPeerJoin(peerId => console.log(`${peerId} joined`));
-        this.room.onPeerLeave(peerId => console.log(`${peerId} left`));
+    start(sessionConfig: SessionConfig) {
+        let newConfig: BaseRoomConfig & FirebaseRoomConfig;
+        if (!sessionConfig.roomPassword) {
+            newConfig = { ...this.trysteroConfig };
+        } else {
+            newConfig = { ...this.trysteroConfig, password: sessionConfig.roomPassword };
+        }
+        console.log('session config', newConfig);
+        try {
+            this.room = joinRoom(newConfig, sessionConfig.roomName);
+
+            console.log('room', this.room.getPeers());
+
+            // this.room.onPeerJoin(peerId => console.log(`${peerId} joined`));
+            // this.room.onPeerLeave(peerId => console.log(`${peerId} left`));
+            console.log('room2', this.room);
+        } catch (err) {
+            console.log('error joining room', err);
+        }
 
         // const peerAudios: { [key: string]: HTMLAudioElement } = {};
         //

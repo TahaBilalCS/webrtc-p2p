@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { ButtonModule } from 'primeng/button';
@@ -8,9 +8,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'primeng/api';
 import { FocusTrapModule } from 'primeng/focustrap';
 import { Router } from '@angular/router';
-import { noop } from 'rxjs';
+import { noop, Subject, takeUntil } from 'rxjs';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 
+export
 @Component({
     selector: 'app-session-setup',
     standalone: true,
@@ -22,28 +25,35 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
         DayNightToggleComponent,
         ReactiveFormsModule,
         SharedModule,
-        FocusTrapModule
+        FocusTrapModule,
+        InputTextModule,
+        PasswordModule
     ],
     providers: [DynamicDialogRef],
     templateUrl: './session-setup.component.html',
     styleUrls: ['./session-setup.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SessionSetupComponent {
+class SessionSetupComponent {
     sessionSetupForm: FormGroup;
     loading = false;
+    private destroy$ = new Subject<void>();
 
     constructor(
         private fb: FormBuilder,
         private router: Router
     ) {
         this.sessionSetupForm = this.fb.group({
-            // themeChecked: true
+            roomName: null,
+            roomPassword: null
         });
     }
 
     startNewSession() {
-        this.loading = true;
-        this.router.navigate(['/session', 1]).then(noop);
+        const roomName = this.sessionSetupForm.get('roomName')?.value;
+        const roomPassword = this.sessionSetupForm.get('roomPassword')?.value;
+        this.router.navigate(['/session', roomName], { state: { roomPassword } });
+
+        // this.loading = true;
     }
 }

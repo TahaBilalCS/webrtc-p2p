@@ -1,16 +1,36 @@
-<form class="home-form" [formGroup]="sessionSetupForm" pFocusTrap>
+<form class="home-form" [formGroup]="sessionSetupForm" pFocusTrap (ngSubmit)="startNewSession()">
     <p-card class="home-card">
-        <!--            <ng-template pTemplate="header">-->
-        <!--                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />-->
-        <!--            </ng-template>-->
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+        </ng-template>
 
         <ng-template pTemplate="title">
             <span class="home-card-title">Share a link with anyone!</span>
         </ng-template>
         <ng-template pTemplate="content">
-            <!--                            <span class="home-card-subtitle">Create a public url below and share it</span>-->
             <section class="session-card-content">
                 <app-day-night-toggle class="theme-toggle"></app-day-night-toggle>
+                <span class="p-float-label">
+                    <input
+                        type="text"
+                        id="room-input"
+                        class="p-inputtext-lg"
+                        pInputText
+                        formControlName="roomName"
+                        size="large"
+                    />
+                    <label for="room-input">Room Name (optional)</label>
+                </span>
+                <span class="p-float-label">
+                    <p-password
+                        class="p-inputtext-lg"
+                        formControlName="roomPassword"
+                        id="password-input"
+                        [toggleMask]="true"
+                        [feedback]="false"
+                    ></p-password>
+                    <label for="password-input">Room Password (optional) </label>
+                </span>
                 <p-button
                     class="start-new-session-button"
                     i18n-label
@@ -23,28 +43,28 @@
                     [autofocus]="true"
                     [loading]="loading"
                     [rounded]="true"
-                    (onClick)="startNewSession()"
+                    type="submit"
                 ></p-button>
             </section>
         </ng-template>
 
-        <!--            <ng-template pTemplate="footer">-->
-        <!--                <p-button-->
-        <!--                    size="small"-->
-        <!--                    styleClass="p-button-text"-->
-        <!--                    class="start-new-session-button"-->
-        <!--                    i18n-label-->
-        <!--                    label="More Info"-->
-        <!--                    i18n-aria-label-->
-        <!--                    aria-label="More Info"-->
-        <!--                    icon="bi-question-circle-fill"-->
-        <!--                    iconPos="right"-->
-        <!--                    pAutoFocus-->
-        <!--                    [autofocus]="true"-->
-        <!--                    [loading]="loading"-->
-        <!--                    [rounded]="true"-->
-        <!--                    (onClick)="startNewSession()"-->
-        <!--                ></p-button>-->
-        <!--            </ng-template>-->
+        <!--        <ng-template pTemplate="footer">-->
+        <!--            <p-button-->
+        <!--                size="small"-->
+        <!--                styleClass="p-button-text"-->
+        <!--                class="start-new-session-button"-->
+        <!--                i18n-label-->
+        <!--                label="More Info"-->
+        <!--                i18n-aria-label-->
+        <!--                aria-label="More Info"-->
+        <!--                icon="bi-question-circle-fill"-->
+        <!--                iconPos="right"-->
+        <!--                pAutoFocus-->
+        <!--                [autofocus]="true"-->
+        <!--                [loading]="loading"-->
+        <!--                [rounded]="true"-->
+        <!--                (onClick)="startNewSession()"-->
+        <!--            ></p-button>-->
+        <!--        </ng-template>-->
     </p-card>
 </form>
